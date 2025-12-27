@@ -49,18 +49,16 @@ cd visual-measure-ai
 
 
 Install dependencies
-
 npm install
 
 Run the development server
 npm run dev
 
-
 Open in Browser
 Navigate to http://localhost:5173 (or the URL shown in your terminal).
 
 Configure API Key
-Enter your Gemini API key in the src/App.tsx file (variable DEFAULT_API_KEY) or via the UI if configured.
+Enter your Gemini API key in the src/App.tsx file (const DEFAULT_API_KEY = "AIzaSyD33hT-y0AQaZSKDj4cYHl3kn2C4IjO0JU";) or via the UI if configured.
 
 🏗️ Design & Architecture (Deliverable #2)
 
