@@ -56,7 +56,8 @@ RESPONSE FORMAT (JSON ONLY):
 // --- Configuration ---
 
 // TODO: PASTE YOUR API KEY HERE if you want to save it permanently.
-const DEFAULT_API_KEY = "AIzaSyD33hT-y0AQaZSKDj4cYHl3kn2C4IjO0JU";
+//const DEFAULT_API_KEY = "AIzaSyAul6Wu3a643nWCldno-BM79Nw-EGd0IV4";
+const DEFAULT_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
 
 export default function App() {
   const [apiKey] = useState(DEFAULT_API_KEY);
@@ -355,9 +356,10 @@ export default function App() {
       try {
         console.log("Direct fetch failed (likely CORS). Trying proxy...");
         // Using allorigins.win as a free CORS proxy for the prototype
-        const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(
+        const proxyUrl = `http://localhost:5000/proxy?url=${encodeURIComponent(
           url
         )}`;
+
         const response = await fetch(proxyUrl);
         if (!response.ok) throw new Error("Proxy fetch failed");
         const blob = await response.blob();
