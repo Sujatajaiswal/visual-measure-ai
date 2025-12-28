@@ -2,19 +2,30 @@ VisualMeasure AI: AI-Powered Visual Product Measurement System
 
 📋 Overview
 
-VisualMeasure AI is a prototype system designed to extract objective, observable visual characteristics directly from product images. Unlike traditional categorization which relies on manual tagging or merchandising logic, this system uses a vision-enabled Large Language Model (LLM) to produce structured, floating-point measurements based purely on visual appearance.
-
-This project was built to demonstrate how AI can quantify abstract visual concepts like "Visual Weight" or "Formality" into machine-readable data (JSON).
+VisualMeasure AI is a prototype system designed to extract objective, measurable visual attributes directly from product images.
+Unlike traditional catalog tagging that relies on manual labeling, this system uses AI-powered vision models to analyze visual characteristics and convert them into structured, numerical insights.
+It enables brands, designers, and researchers to quantify subjective attributes such as formality, visual weight, and style in a consistent, machine-readable format.
 
 ✨ Features
 
-Multi-Dimensional Analysis: Scores products on a scale of -5.0 to +5.0 across five distinct visual dimensions.
-Attribute Detection: Automatically detects physical attributes like wirecore visibility, frame geometry, transparency, and textures.
+Multi-Dimensional Visual Analysis
+Evaluates each product on multiple visual dimensions using a standardized scale from –5.0 to +5.0.
 
-Dual Modes:
-Dataset Mode: Parse and analyze lists of products from Excel (.xlsx) or CSV files.
-Single Image Mode: Upload and analyze individual images for quick testing.
-Structured Output: Returns data in a strict JSON format suitable for database integration.
+🔹 Automatic Attribute Detection
+Identifies attributes such as:
+Frame geometry
+Texture and finish
+Rim structure
+Color composition
+Visual complexity
+
+🔹 Dual Analysis Modes
+Dataset Mode – Upload CSV/Excel files to analyze large product collections.
+Single Image Mode – Upload an image to instantly analyze visual attributes.
+
+🔹 Structured Output
+Clean, consistent JSON-based output
+Easy to store, compare, and integrate into databases or analytics pipelines
 
 📊 Visual Dimensions
 
@@ -26,11 +37,17 @@ Unconventionality: Classic/Timeless (-5.0) ↔ Avant-garde (-5.0)
 Formality: Casual (-5.0) ↔ Formal (+5.0)
 
 🛠️ Technical Stack
+Frontend
+React.js – UI framework
+TypeScript – Type safety
+Vite – Fast build tool
+Tailwind CSS – Styling
+Lucide Icons – UI icons
 
-Frontend: React (v18), TypeScript, Vite
-Styling: Tailwind CSS, Lucide React (Icons)
-AI Integration: Google Gemini API (Multimodal Vision)
-Data Parsing: SheetJS (XLSX) for Excel file processing
+Backend / Processing
+Node.js + Express – API & proxy server
+Google Gemini Vision API – Image understanding & analysis
+SheetJS (xlsx) – Excel & CSV parsing
 
 🚀 Getting Started
 
@@ -41,12 +58,9 @@ A Google Gemini API Key
 
 Installation
 
-Clone the repository
-((https://github.com/Sujatajaiswal/visual-measure-ai/))
-
-git clone [https://github.com/Sujatajaiswal/visual-measure-ai.git](https://github.com/Sujatajaiswal/visual-measure-ai.git)
+git clone https://github.com/Sujatajaiswal/visual-measure-ai.git
 cd visual-measure-ai
-
+npm install
 
 Install dependencies
 npm install
@@ -58,12 +72,24 @@ Open in Browser
 Navigate to http://localhost:5173 (or the URL shown in your terminal).
 
 Configure API Key
-Enter your Gemini API key in the src/App.tsx file (const DEFAULT_API_KEY = "AIzaSyD33hT-y0AQaZSKDj4cYHl3kn2C4IjO0JU";) or via the UI if configured.
+.env
+VITE_GEMINI_API_KEY=your_api_key_here
+
 
 🏗️ Design & Architecture (Deliverable #2)
+User Image
+   ↓
+React UI
+   ↓
+Node.js Proxy (CORS Handling)
+   ↓
+Gemini Vision API
+   ↓
+AI Analysis (JSON Output)
+   ↓
+Visual Dashboard
 
 High-Level Architecture
-
 The application is built as a Client-Side SPA (Single Page Application). It interacts directly with the AI provider's API from the browser.
 Input Layer: React components handle file parsing (CSV/Excel) and image conversion (Blob to Base64).
 Processing Layer: A prompt engineering layer constructs a strict system prompt that enforces JSON schema outputs from the vision model.
@@ -83,11 +109,9 @@ Non-Determinism: As with all LLMs, running the analysis on the exact same image 
 🔮 Future Improvements
 
 Batch Processing Queue: Implement a backend queue (Redis/Bull) to handle bulk dataset processing asynchronously.
-
 caching: Cache analysis results by Image Hash to prevent re-analyzing the same image.
-
 Confidence Scores: Request the model to output a confidence interval for its measurements.
+Deployment (Vercel / Netlify + Cloud Functions)
 
 📄 License
-
-MIT
+This project is licensed under the MIT License.
